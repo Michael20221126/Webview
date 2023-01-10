@@ -1,0 +1,3 @@
+proxy-tools
+pythonnet
+pywebview ~= 3.7.2

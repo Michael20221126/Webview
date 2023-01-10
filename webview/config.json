@@ -1,0 +1,27 @@
+{
+    "window": {
+        "title": "游戏",
+        "url": "app/main.html",
+        "width": 800,
+        "height": 600
+    },
+    "size": {
+        "resizable": 1,
+        "fullscreen": 0,
+        "min_size": (200, 100)
+    },
+    "frameless": {
+        "frameless": 0,
+        "easy_drag": 1
+    },
+    "state": {
+        "minimized": 0,
+        "on_top": 0,
+        "confirm_close": 0
+    },
+    "web": {
+        "background_color": "#FFFFFF",
+        "text_select": 0,
+        "transparent": 0
+    }
+}

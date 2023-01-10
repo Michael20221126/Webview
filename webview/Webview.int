@@ -1,0 +1,42 @@
+# coding = utf-8
+import webview
+import os
+import shutil
+ 
+ 
+def purge_cache(path):
+    for file_name in os.listdir(path):
+        abs_path = os.path.join(path, file_name)
+        if file_name == "__pycache__":
+            print(abs_path)
+            shutil.rmtree(abs_path)
+        elif os.path.isdir(abs_path):
+            purge_cache(abs_path)
+    
+with open(".\config.json", "r", encoding="utf-8") as file:
+    data = file.read()
+config = str()
+exec("config = " + data)
+
+path_list = os.path.dirname(os.path.abspath(__file__)).split(os.sep)
+root_dir = os.sep.join(path_list[0:-2:])
+purge_cache(root_dir)
+
+webview.create_window(title=config['window']['title'],
+                      url=config['window']['url'],
+                      width=config['window']['width'],
+                      height=config['window']['height'],
+                      resizable=config['size']['resizable'],
+                      fullscreen=config['size']['fullscreen'],
+                      min_size=config['size']['min_size'],
+                      frameless=config['frameless']['frameless'],
+                      easy_drag=config['frameless']['easy_drag'],
+                      minimized=config['state']['minimized'],
+                      on_top=config['state']['on_top'],
+                      confirm_close=config['state']['confirm_close'],
+                      background_color=config['web']['background_color'],
+                      transparent=config['web']['transparent'],
+                      text_select=config['web']['text_select']
+                      )
+webview.start()
+purge_cache(root_dir)
